@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* Import beautiful handwriting fonts for the female music artist theme */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura:wght@400&family=Alex+Brush&family=Kaushan+Script:wght@400&display=swap');
+=======
+/* Import fancy fonts for the music artist theme */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
 =======
 /* Import fancy fonts for the music artist theme */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
@@ -11,6 +16,7 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* CSS Variables for shadcn/ui */
 @layer base {
@@ -58,11 +64,28 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+=======
+/* Custom font classes for 3D text and UI */
+.dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.playfair-display {
+  font-family: 'Playfair Display', serif;
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
 }
 
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    overflow: hidden;
+    /* Prevent zoom on double-tap for mobile */
+    touch-action: manipulation;
   }
   body {
     @apply bg-background text-foreground;

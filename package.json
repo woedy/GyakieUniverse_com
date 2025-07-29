@@ -13,7 +13,10 @@
     "@fontsource/inter": "^5.2.5",
     "@fontsource/playfair-display": "^5.2.6",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
     "@jridgewell/trace-mapping": "^0.3.25",
     "@neondatabase/serverless": "^0.10.4",
 >>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
@@ -47,6 +50,10 @@
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@react-three/postprocessing": "^2.19.1",
+<<<<<<< HEAD
+=======
+    "@tanstack/react-query": "^5.60.5",
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
     "@use-gesture/react": "^10.3.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

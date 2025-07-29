@@ -32,8 +32,13 @@ export default function TopNavigation() {
           <div className="flex items-center">
             <h1 
 <<<<<<< HEAD
+<<<<<<< HEAD
               className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
               style={{ fontFamily: "Great Vibes, cursive" }}
+=======
+              className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
+              style={{ fontFamily: "Playfair Display, serif" }}
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
 =======
               className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
               style={{ fontFamily: "Playfair Display, serif" }}

@@ -135,6 +135,7 @@ export default function Planet({
         />
       </mesh>
       
+<<<<<<< HEAD
       {/* Planet label that moves with planet - Beautiful handwriting style */}
       <group ref={textRef} position={[0, size + 1, 0]}>
         <Text
@@ -147,6 +148,11 @@ export default function Planet({
           outlineColor="#000000"
           font="https://fonts.gstatic.com/s/greatvibes/v16/RWmMoKWR9v4ksMfaWd_OKuHxAUjcxA.woff2"
 =======
+=======
+      {/* Planet label that moves with planet */}
+      <group ref={textRef} position={[0, size + 1, 0]}>
+        <Text
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
           fontSize={0.7}
           color="#ffffff"
           anchorX="center"
@@ -154,6 +160,9 @@ export default function Planet({
           outlineWidth={0.04}
           outlineColor="#000000"
           fontWeight="bold"
+<<<<<<< HEAD
+>>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
+=======
 >>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
         >
           {label}
