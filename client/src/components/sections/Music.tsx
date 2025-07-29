@@ -1,7 +1,8 @@
 import { Button } from "../ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";  
 import { Play, Pause, Download } from "lucide-react";
 import { useState } from "react";
+import BackButton from "../ui/BackButton";
 
 export default function Music() {
   const [playing, setPlaying] = useState<string | null>(null);
@@ -41,6 +42,7 @@ export default function Music() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white p-6">
+      <BackButton />
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">Music</h1>

@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { MapPin, Calendar, Clock, Ticket } from "lucide-react";
+import BackButton from "../ui/BackButton";
 
 export default function Tours() {
   const upcomingShows = [
@@ -87,6 +88,7 @@ export default function Tours() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white p-6">
+      <BackButton />
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">Tour Dates</h1>

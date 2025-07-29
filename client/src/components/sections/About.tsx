@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Instagram, Twitter, Youtube, Music, Award, Globe } from "lucide-react";
+import BackButton from "../ui/BackButton";
 
 export default function About() {
   const achievements = [
@@ -19,6 +20,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-900 via-purple-900 to-fuchsia-900 text-white p-6">
+      <BackButton />
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4">About Gyakie</h1>

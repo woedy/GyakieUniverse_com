@@ -1,6 +1,19 @@
+/* Import fancy fonts for the music artist theme */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom font classes for 3D text and UI */
+.dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.playfair-display {
+  font-family: 'Playfair Display', serif;
+}
 
 @layer base {
   * {

@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { ShoppingCart, Heart, Star } from "lucide-react";
+import BackButton from "../ui/BackButton";
 
 export default function Shop() {
   const [cart, setCart] = useState<{ [key: number]: number }>({});
@@ -110,6 +111,7 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-900 via-red-900 to-pink-900 text-white p-6">
+      <BackButton />
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">Official Store</h1>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight, Download, Heart } from "lucide-react";
+import BackButton from "../ui/BackButton";
 
 export default function Images() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -63,6 +64,7 @@ export default function Images() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-900 via-pink-900 to-purple-900 text-white p-6">
+      <BackButton />
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">Gallery</h1>

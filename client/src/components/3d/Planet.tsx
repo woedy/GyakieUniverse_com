@@ -138,12 +138,13 @@ export default function Planet({
       {/* Planet label that moves with planet */}
       <group ref={textRef} position={[0, size + 1, 0]}>
         <Text
-          fontSize={0.5}
+          fontSize={0.7}
           color="#ffffff"
           anchorX="center"
           anchorY="middle"
-          outlineWidth={0.02}
+          outlineWidth={0.04}
           outlineColor="#000000"
+          fontWeight="bold"
         >
           {label}
         </Text>
