@@ -3,13 +3,17 @@ import * as THREE from "three";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useScene } from "../../lib/stores/useScene";
+import { useGame } from "../../lib/stores/useGame";
 import GyakieCharacter from "./GyakieCharacter";
 import Birds from "./Birds";
 import Universe from "./Universe";
 import Lighting from "./Lighting";
+import InteractiveControls from "./InteractiveControls";
+import BackgroundAliens from "./BackgroundAliens";
 
 export default function Scene() {
   const { setSceneLoaded, animationPhase } = useScene();
+  const { isUserControlling } = useGame();
   const { scene } = useThree();
 
   useEffect(() => {
@@ -27,8 +31,12 @@ export default function Scene() {
       {/* Lighting */}
       <Lighting />
       
-      {/* Camera Controls */}
+      {/* Interactive Controls - Enhanced manual controls */}
+      <InteractiveControls />
+      
+      {/* Orbit Controls - Disabled when user is manually controlling */}
       <OrbitControls
+        enabled={!isUserControlling}
         enablePan={true}
         enableZoom={true}
         enableRotate={true}
@@ -42,10 +50,13 @@ export default function Scene() {
       <Universe />
 
       {/* Birds that will scatter */}
-      {animationPhase === 'initial' && <Birds />}
+      {(animationPhase === 'initial' || animationPhase === 'walking' || animationPhase === 'arrived' || animationPhase === 'scattering') && <Birds />}
 
       {/* Gyakie character */}
       <GyakieCharacter />
+
+      {/* Background aliens and spaceships */}
+      <BackgroundAliens />
     </>
   );
 }

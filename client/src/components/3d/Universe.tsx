@@ -25,7 +25,7 @@ export default function Universe() {
         <pointsMaterial size={0.5} color="#ffffff" sizeAttenuation={false} />
       </points>
       
-      {/* Planets representing different sections */}
+      {/* Planets representing different sections - with slower default orbits */}
       <Planet
         position={[5, 2, 5]}
         size={1.2}
@@ -33,7 +33,7 @@ export default function Universe() {
         section="music"
         label="MUSIC"
         orbitRadius={6}
-        orbitSpeed={0.3}
+        orbitSpeed={0.15}
       />
       
       <Planet
@@ -43,7 +43,7 @@ export default function Universe() {
         section="images"
         label="IMAGES"
         orbitRadius={5}
-        orbitSpeed={0.5}
+        orbitSpeed={0.25}
       />
       
       <Planet
@@ -53,7 +53,7 @@ export default function Universe() {
         section="tours"
         label="TOURS"
         orbitRadius={8}
-        orbitSpeed={0.2}
+        orbitSpeed={0.1}
       />
       
       <Planet
@@ -63,7 +63,7 @@ export default function Universe() {
         section="shop"
         label="SHOP"
         orbitRadius={7}
-        orbitSpeed={0.4}
+        orbitSpeed={0.2}
       />
       
       <Planet
@@ -73,7 +73,7 @@ export default function Universe() {
         section="about"
         label="ABOUT"
         orbitRadius={4}
-        orbitSpeed={0.6}
+        orbitSpeed={0.3}
       />
 
       {/* Central sun/core */}

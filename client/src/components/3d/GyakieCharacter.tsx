@@ -1,16 +1,35 @@
-import { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useRef, useState, useEffect } from "react";
+import { useFrame, ThreeEvent } from "@react-three/fiber";
 import { Mesh } from "three";
 import * as THREE from "three";
 import { useScene } from "../../lib/stores/useScene";
 import { useAudio } from "../../lib/stores/useAudio";
+import { useGame } from "../../lib/stores/useGame";
 
 export default function GyakieCharacter() {
   const meshRef = useRef<Mesh>(null);
-  const { animationPhase, setAnimationPhase, setWelcomeShown } = useScene();
-  const { playSuccess } = useAudio();
-  const [position, setPosition] = useState([-8, 0, 0]);
+  const { animationPhase, setAnimationPhase, setWelcomeShown, setCurrentSection } = useScene();
+  const { playSuccess, playHit } = useAudio();
+  const { userInteracting, isUserControlling } = useGame();
+  const [position, setPosition] = useState([-12, 0, 0]);
   const [walkCycle, setWalkCycle] = useState(0);
+  
+  // Click detection state
+  const startPointer = useRef({ x: 0, y: 0 });
+  const startTime = useRef(0);
+  const CLICK_TIME_THRESHOLD = 300; // ms
+  const CLICK_DISTANCE_THRESHOLD = 8; // pixels
+
+  // Handle phase transitions with useEffect to avoid state updates during render
+  useEffect(() => {
+    if (animationPhase === 'initial') {
+      // Start the opening sequence after a brief delay
+      const timer = setTimeout(() => {
+        setAnimationPhase('walking');
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [animationPhase, setAnimationPhase]);
 
   useFrame((state, delta) => {
     if (!meshRef.current) return;
@@ -26,14 +45,18 @@ export default function GyakieCharacter() {
       setPosition(prev => {
         const newX = prev[0] + delta * 2;
         if (newX >= 0) {
-          // Reached center, stop walking
-          setAnimationPhase('arrived');
-          playSuccess();
-          // Show welcome message for 3 seconds
-          setTimeout(() => {
-            setWelcomeShown(true);
-            setAnimationPhase('idle');
-          }, 3000);
+          // Use requestAnimationFrame to avoid state update during render
+          requestAnimationFrame(() => {
+            setAnimationPhase('arrived');
+            playSuccess();
+            // Show welcome message for 3 seconds
+            setTimeout(() => {
+              setWelcomeShown(true);
+              setTimeout(() => {
+                setAnimationPhase('scattering');
+              }, 2000);
+            }, 3000);
+          });
           return [0, bobHeight, 0];
         }
         return [newX, bobHeight, 0];
@@ -44,7 +67,7 @@ export default function GyakieCharacter() {
       setPosition([0, floatHeight, 0]);
     }
 
-    meshRef.current.position.set(...position);
+    meshRef.current.position.set(position[0], position[1], position[2]);
     
     // Rotation for walking
     if (animationPhase === 'walking') {
@@ -52,8 +75,56 @@ export default function GyakieCharacter() {
     }
   });
 
+  const handlePointerDown = (e: ThreeEvent<PointerEvent>) => {
+    // Don't interfere if user is already controlling the scene
+    if (isUserControlling || userInteracting) {
+      return;
+    }
+    
+    startPointer.current = { x: e.nativeEvent.clientX, y: e.nativeEvent.clientY };
+    startTime.current = Date.now();
+    
+    // Stop event propagation to prevent canvas controls from taking over
+    e.stopPropagation();
+  };
+
+  const handlePointerUp = (e: ThreeEvent<PointerEvent>) => {
+    // Don't interfere if user is controlling the scene
+    if (isUserControlling || userInteracting) {
+      return;
+    }
+    
+    const timeDiff = Date.now() - startTime.current;
+    const distance = Math.sqrt(
+      Math.pow(e.nativeEvent.clientX - startPointer.current.x, 2) + 
+      Math.pow(e.nativeEvent.clientY - startPointer.current.y, 2)
+    );
+
+    // Check if this was a quick click with minimal movement
+    const wasClick = timeDiff < CLICK_TIME_THRESHOLD && distance < CLICK_DISTANCE_THRESHOLD;
+    
+    if (wasClick) {
+      playHit();
+      console.log('Gyakie character clicked - navigating to about!');
+      
+      // Navigate to about section after a brief delay
+      setTimeout(() => {
+        setCurrentSection('about');
+      }, 200);
+    }
+    
+    // Stop event propagation
+    e.stopPropagation();
+  };
+
   return (
-    <mesh ref={meshRef} castShadow>
+    <mesh 
+      ref={meshRef} 
+      castShadow
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      userData={{ clickable: true }}
+    >
       {/* Simple character representation - a stylized figure */}
       <group>
         {/* Body */}
@@ -74,12 +145,26 @@ export default function GyakieCharacter() {
           <meshStandardMaterial color="#2F1B14" />
         </mesh>
         
-        {/* Arms */}
-        <mesh position={[-0.6, 0.2, 0]} rotation={[0, 0, Math.sin(walkCycle * 2) * 0.3]}>
+        {/* Arms - with welcoming gesture */}
+        <mesh 
+          position={[-0.6, 0.2, 0]} 
+          rotation={[
+            animationPhase === 'arrived' ? -0.5 : 0, 
+            0, 
+            animationPhase === 'arrived' ? 0.8 : Math.sin(walkCycle * 2) * 0.3
+          ]}
+        >
           <cylinderGeometry args={[0.1, 0.1, 1, 8]} />
           <meshStandardMaterial color="#DEB887" />
         </mesh>
-        <mesh position={[0.6, 0.2, 0]} rotation={[0, 0, -Math.sin(walkCycle * 2) * 0.3]}>
+        <mesh 
+          position={[0.6, 0.2, 0]} 
+          rotation={[
+            animationPhase === 'arrived' ? -0.5 : 0, 
+            0, 
+            animationPhase === 'arrived' ? -0.8 : -Math.sin(walkCycle * 2) * 0.3
+          ]}
+        >
           <cylinderGeometry args={[0.1, 0.1, 1, 8]} />
           <meshStandardMaterial color="#DEB887" />
         </mesh>

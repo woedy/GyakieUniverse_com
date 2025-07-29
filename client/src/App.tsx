@@ -7,6 +7,7 @@ import Scene from "./components/3d/Scene";
 import LoadingScreen from "./components/ui/LoadingScreen";
 import WelcomeMessage from "./components/ui/WelcomeMessage";
 import Navigation from "./components/ui/Navigation";
+import InteractionInstructions from "./components/ui/InteractionInstructions";
 import Music from "./components/sections/Music";
 import Images from "./components/sections/Images";
 import Tours from "./components/sections/Tours";
@@ -48,7 +49,11 @@ function App() {
   }
 
   return (
-    <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
+<div
+  className={`w-screen h-screen relative overflow-hidden bg-black ${
+    currentSection !== 'universe' ? 'overflow-y-auto' : ''
+  }`}
+>
       {!sceneLoaded && <LoadingScreen />}
       
       {sceneLoaded && !welcomeShown && <WelcomeMessage />}
@@ -65,7 +70,14 @@ function App() {
             }}
             gl={{
               antialias: true,
-              powerPreference: "high-performance"
+              powerPreference: "high-performance",
+              alpha: false
+            }}
+            style={{ 
+              display: 'block',
+              width: '100%',
+              height: '100%',
+              touchAction: 'none' // Prevent default touch behaviors
             }}
           >
             <Suspense fallback={null}>
@@ -73,6 +85,7 @@ function App() {
             </Suspense>
           </Canvas>
           <Navigation />
+          <InteractionInstructions />
         </KeyboardControls>
       )}
 

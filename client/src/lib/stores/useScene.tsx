@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 
 export type SceneSection = "universe" | "music" | "images" | "tours" | "shop" | "about";
-export type AnimationPhase = "initial" | "walking" | "arrived" | "idle";
+export type AnimationPhase = "initial" | "walking" | "arrived" | "scattering" | "idle";
 
 interface SceneState {
   currentSection: SceneSection;

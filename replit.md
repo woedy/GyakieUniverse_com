@@ -6,6 +6,17 @@ This is a full-stack web application featuring an interactive 3D artist portfoli
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes (January 2025)
+
+✓ Enhanced interactivity with gamified universe controls
+✓ Planet text labels now move with their respective planets
+✓ Added manual drag-to-rotate universe control
+✓ Implemented orbital speed control based on user interaction
+✓ Super responsive design for all screen sizes including VR
+✓ Mobile-optimized touch controls and UI scaling
+✓ Real-time interaction feedback and visual indicators
+✓ Enhanced performance optimizations for all devices
+
 ## System Architecture
 
 ### Frontend Architecture

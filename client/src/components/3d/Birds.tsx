@@ -1,4 +1,4 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { InstancedMesh, Object3D } from "three";
 import * as THREE from "three";
@@ -8,25 +8,40 @@ const BIRD_COUNT = 12;
 
 export default function Birds() {
   const meshRef = useRef<InstancedMesh>(null);
-  const { animationPhase } = useScene();
+  const { animationPhase, setAnimationPhase } = useScene();
+  const [scatterStartTime, setScatterStartTime] = useState<number | null>(null);
   
-  // Pre-calculate bird data outside render
+  // Pre-calculate bird data outside render - positioned on Gyakie initially
   const birdData = useMemo(() => {
     const birds = [];
+    const positions = [
+      // On shoulders
+      [-0.8, 1.2, 0.3], [0.8, 1.2, 0.3],
+      // On head/hair
+      [-0.3, 1.8, 0.2], [0.3, 1.8, 0.2],
+      // Flying nearby
+      [-1.5, 2, 0], [1.5, 2, 0],
+      [-1, 0.5, 1], [1, 0.5, 1],
+      [0, 3, -1], [-0.5, 2.5, -0.8],
+      [0.5, 2.5, -0.8], [0, 1.5, 1.2]
+    ];
+    
     for (let i = 0; i < BIRD_COUNT; i++) {
+      const pos = positions[i] || [
+        (Math.random() - 0.5) * 3,
+        Math.random() * 2 + 1,
+        (Math.random() - 0.5) * 3
+      ];
+      
       birds.push({
         id: i,
-        initialPosition: [
-          (Math.random() - 0.5) * 10,
-          Math.random() * 3 + 1,
-          (Math.random() - 0.5) * 10
-        ],
+        initialPosition: pos,
         scatterDirection: [
-          (Math.random() - 0.5) * 20,
-          Math.random() * 5 + 2,
-          (Math.random() - 0.5) * 20
+          (Math.random() - 0.5) * 30,
+          Math.random() * 10 + 5,
+          (Math.random() - 0.5) * 30
         ],
-        speed: Math.random() * 2 + 1,
+        speed: Math.random() * 3 + 2,
         phase: Math.random() * Math.PI * 2
       });
     }
@@ -35,23 +50,42 @@ export default function Birds() {
 
   const tempObject = useMemo(() => new Object3D(), []);
 
+  // Handle scattering phase
+  useEffect(() => {
+    if (animationPhase === 'scattering' && scatterStartTime === null) {
+      setScatterStartTime(Date.now());
+      
+      // After birds scatter, transition to idle
+      setTimeout(() => {
+        setAnimationPhase('idle');
+      }, 3000);
+    }
+  }, [animationPhase, scatterStartTime, setAnimationPhase]);
+
   useFrame((state, delta) => {
     if (!meshRef.current) return;
 
     birdData.forEach((bird, index) => {
       let x, y, z;
       
-      if (animationPhase === 'initial' || animationPhase === 'walking') {
-        // Birds are initially resting, with gentle movement
-        x = bird.initialPosition[0] + Math.sin(state.clock.elapsedTime + bird.phase) * 0.5;
-        y = bird.initialPosition[1] + Math.sin(state.clock.elapsedTime * 2 + bird.phase) * 0.2;
-        z = bird.initialPosition[2] + Math.cos(state.clock.elapsedTime + bird.phase) * 0.3;
-      } else {
-        // Birds scatter when Gyakie arrives
-        const scatterTime = state.clock.elapsedTime - 3; // Assuming 3 seconds to walk
+      if (animationPhase === 'initial' || animationPhase === 'walking' || animationPhase === 'arrived') {
+        // Birds follow Gyakie's position while she walks, then rest on her
+        const charakterX = animationPhase === 'walking' ? -12 + (state.clock.elapsedTime - 1) * 2 : 0;
+        
+        x = charakterX + bird.initialPosition[0] + Math.sin(state.clock.elapsedTime + bird.phase) * 0.1;
+        y = bird.initialPosition[1] + Math.sin(state.clock.elapsedTime * 2 + bird.phase) * 0.05;
+        z = bird.initialPosition[2] + Math.cos(state.clock.elapsedTime + bird.phase) * 0.1;
+      } else if (animationPhase === 'scattering' && scatterStartTime) {
+        // Birds scatter dramatically
+        const scatterTime = (Date.now() - scatterStartTime) / 1000;
         x = bird.initialPosition[0] + bird.scatterDirection[0] * scatterTime * bird.speed;
         y = bird.initialPosition[1] + bird.scatterDirection[1] * scatterTime * bird.speed;
         z = bird.initialPosition[2] + bird.scatterDirection[2] * scatterTime * bird.speed;
+      } else {
+        // Birds have scattered and are gone
+        x = 1000; // Far away
+        y = 1000;
+        z = 1000;
       }
 
       tempObject.position.set(x, y, z);

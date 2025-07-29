@@ -5,6 +5,14 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    overflow: hidden;
+    /* Prevent zoom on double-tap for mobile */
+    touch-action: manipulation;
   }
 
   body {
@@ -14,6 +22,16 @@
     overflow: hidden;
     width: 100vw;
     height: 100vh;
+    /* Disable text selection for better mobile experience */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Enable hardware acceleration */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 }
 
@@ -26,5 +44,41 @@
 canvas {
   width: 100% !important;
   height: 100% !important;
-  touch-action: none;
+  touch-action: none !important;
+  /* Optimize for mobile performance */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  outline: none;
+  display: block !important;
+}
+
+/* Mobile specific optimizations */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-optimized .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .mobile-optimized .text-xl {
+    font-size: 1.1rem;
+  }
+}
+
+/* VR and large screen optimizations */
+@media (min-width: 1920px) {
+  canvas {
+    image-rendering: crisp-edges;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  canvas {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
 }
