@@ -128,3 +128,10 @@ The site is now a fully static application optimized for deployment on platforms
 - **Caching Strategy**: Query caching and asset fingerprinting
 
 The architecture prioritizes developer experience with hot reloading, type safety, and modular component design while maintaining performance through optimized 3D rendering and efficient data fetching patterns.
+
+
+### what is needed to be fix (Agent focus task).
+- when the site launches, its stuck on the loading page. i thhink it as something to do with the font. make sure it passes the loading screen to the universe scene.
+- make sure all routes to every page(portfolio) is properly connected. so wen i click to naviggate to any page will work.
+-make sure thhe zoom in ease in animation for page transition works fine.
+-Most importantly make sure thhe complete site works fine and te proper universe scenes and transittion to pages work simlesly.
