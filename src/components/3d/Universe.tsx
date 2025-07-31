@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { useTexture } from "@react-three/drei";
 import Planet from "./Planet";
 import * as THREE from "three";

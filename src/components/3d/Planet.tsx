@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useFrame, ThreeEvent } from "@react-three/fiber";
 import { Mesh, Group } from "three";
 import * as THREE from "three";
@@ -144,7 +144,7 @@ export default function Planet({
           anchorY="middle"
           outlineWidth={0.05}
           outlineColor="#000000"
-          font="https://fonts.gstatic.com/s/greatvibes/v16/RWmMoKWR9v4ksMfaWd_OKuHxAUjcxA.woff2"
+          font="/fonts/inter.json"
         >
           {label}
         </Text>

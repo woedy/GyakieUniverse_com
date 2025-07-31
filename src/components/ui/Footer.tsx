@@ -1,3 +1,4 @@
+import React from "react";
 import { Heart, Music } from "lucide-react";
 import "@fontsource/playfair-display/400.css";
 

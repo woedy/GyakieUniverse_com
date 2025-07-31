@@ -3,7 +3,8 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: [
-    "./client/src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./index.html",
   ],
   prefix: "",
   theme: {
@@ -49,6 +50,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        heading: ["Playfair Display", "serif"],
+        script: ["Dancing Script", "cursive"],
       },
       borderRadius: {
         lg: "var(--radius)",

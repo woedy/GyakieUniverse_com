@@ -1,10 +1,18 @@
-import { useRef, useMemo, useState, useEffect } from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { InstancedMesh, Object3D } from "three";
 import * as THREE from "three";
 import { useScene } from "../../lib/stores/useScene";
 
 const BIRD_COUNT = 12;
+
+interface BirdData {
+  id: number;
+  initialPosition: number[];
+  scatterDirection: number[];
+  speed: number;
+  phase: number;
+}
 
 export default function Birds() {
   const meshRef = useRef<InstancedMesh>(null);
@@ -13,7 +21,7 @@ export default function Birds() {
   
   // Pre-calculate bird data outside render - positioned on Gyakie initially
   const birdData = useMemo(() => {
-    const birds = [];
+    const birds: BirdData[] = [];
     const positions = [
       // On shoulders
       [-0.8, 1.2, 0.3], [0.8, 1.2, 0.3],

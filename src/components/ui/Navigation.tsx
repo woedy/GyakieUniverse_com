@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "./button";
 import { useScene } from "../../lib/stores/useScene";
 import { useAudio } from "../../lib/stores/useAudio";

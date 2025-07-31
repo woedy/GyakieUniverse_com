@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useScene } from "../../lib/stores/useScene";
 
 export default function WelcomeMessage() {

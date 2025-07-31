@@ -1,6 +1,12 @@
-/* Import beautiful handwriting fonts for the female music artist theme */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura:wght@400&family=Alex+Brush&family=Kaushan+Script:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* Import fonts using the installed packages instead of external URLs */
+@import '@fontsource/dancing-script/400.css';
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/playfair-display/600.css';
+@import '@fontsource/playfair-display/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
 
 @tailwind base;
 @tailwind components;
@@ -73,7 +79,7 @@
 }
 
 .great-vibes {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Dancing Script', cursive;
 }
 
 @layer base {

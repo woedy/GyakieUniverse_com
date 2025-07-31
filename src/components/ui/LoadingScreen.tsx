@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useIsMobile } from "../../hooks/use-is-mobile";
 
 export default function LoadingScreen() {

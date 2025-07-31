@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGame } from "../../lib/stores/useGame";
 import { useIsMobile } from "../../hooks/use-is-mobile";
 import { Card } from "./card";

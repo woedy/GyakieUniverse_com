@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import * as THREE from "three";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -17,10 +17,10 @@ export default function Scene() {
   const { scene } = useThree();
 
   useEffect(() => {
-    // Scene is ready
+    // Scene is ready - reduce timeout for faster loading
     setTimeout(() => {
       setSceneLoaded(true);
-    }, 1000);
+    }, 100);
   }, [setSceneLoaded]);
 
   return (

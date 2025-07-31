@@ -33,7 +33,7 @@ export default function TopNavigation() {
           <div className="flex items-center">
             <h1 
               className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent cursor-pointer"
-              style={{ fontFamily: "Great Vibes, cursive" }}
+              style={{ fontFamily: "Dancing Script, cursive" }}
               onClick={() => handleNavigation("universe")}
             >
               Gyakie's Universe
