@@ -1,7 +1,7 @@
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";  
 import { Play, Pause, Download } from "lucide-react";
-import { useState } from "react";
 import BackButton from "../ui/BackButton";
 
 export default function Music() {

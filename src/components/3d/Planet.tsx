@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useFrame, ThreeEvent } from "@react-three/fiber";
-import { Mesh, Group } from "three";
+import { Mesh, Group, Vector3 } from "three";
 import * as THREE from "three";
-import { useTexture, Text } from "@react-three/drei";
+import { useTexture, Text, Html } from "@react-three/drei";
 import { useScene } from "../../lib/stores/useScene";
 import { useAudio } from "../../lib/stores/useAudio";
 import { useGame } from "../../lib/stores/useGame";
@@ -136,18 +136,36 @@ export default function Planet({
       </mesh>
       
       {/* Planet label that moves with planet - Beautiful handwriting style */}
-      <group ref={textRef} position={[0, size + 1, 0]}>
-        <Text
-          fontSize={0.8}
-          color="#ffffff"
-          anchorX="center"
-          anchorY="middle"
-          outlineWidth={0.05}
-          outlineColor="#000000"
-          font="/fonts/inter.json"
+      <group ref={textRef} position={[0, size + 1.5, 0]}>
+        <Html
+          center
+          distanceFactor={10}
+          transform
+          occlude
+          style={{
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
         >
-          {label}
-        </Text>
+          <div
+            className={`transition-all duration-300 ${hovered ? 'scale-110' : 'scale-100'}`}
+            style={{
+              fontFamily: 'Dancing Script, cursive',
+              fontSize: '28px',
+              fontWeight: '700',
+              color: '#ff69b4',
+              textShadow: '2px 2px 4px rgba(45, 27, 105, 0.9), 0 0 12px rgba(255, 105, 180, 0.6)',
+              letterSpacing: '2px',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              filter: hovered ? 'drop-shadow(0 0 10px rgba(255, 105, 180, 0.9))' : 'drop-shadow(0 0 6px rgba(255, 105, 180, 0.4))',
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+            }}
+          >
+            {label}
+          </div>
+        </Html>
       </group>
       
       {/* Ring effect for some planets */}

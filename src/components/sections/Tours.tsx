@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { MapPin, Calendar, Clock, Ticket } from "lucide-react";
