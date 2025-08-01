@@ -61,7 +61,7 @@ export default function TopNavigation() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <div className="grid grid-cols-3 gap-1">
+            <div className="flex gap-1">
               {sections.slice(0, 6).map(({ id, icon: Icon }) => (
                 <button
                   key={id}

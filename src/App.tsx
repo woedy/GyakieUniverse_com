@@ -58,6 +58,8 @@ function App() {
 
   return (
     <div className="w-screen h-screen relative overflow-hidden bg-black">
+
+      
       <TopNavigation />
       
       {!sceneLoaded && <LoadingScreen />}

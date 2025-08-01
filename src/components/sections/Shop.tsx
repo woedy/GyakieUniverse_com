@@ -4,6 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import { Badge } from "../ui/badge";
 import { ShoppingCart, Heart, Star, X, Plus, Info } from "lucide-react";
 import BackButton from "../ui/BackButton";
+import largeDesktopImage from '/images/cover/pose.jpg'; // 1024px+
+import video1 from '/images/cover/video1.png';
+
 
 interface Product {
   id: number;
@@ -88,7 +91,7 @@ export default function Shop() {
       id: 1,
       name: "Forever Tour T-Shirt",
       price: 35,
-      image: "https://via.placeholder.com/400x400/FF69B4/FFFFFF?text=T-Shirt",
+      image: video1,
       category: "Apparel",
       rating: 4.8,
       reviews: 124,
@@ -100,7 +103,7 @@ export default function Shop() {
       id: 2,
       name: "Gyakie Signature Hoodie",
       price: 65,
-      image: "https://via.placeholder.com/400x400/9932CC/FFFFFF?text=Hoodie",
+      image: video1,
       category: "Apparel",
       rating: 4.9,
       reviews: 89,
@@ -112,7 +115,7 @@ export default function Shop() {
       id: 3,
       name: "My Diary Vinyl Record",
       price: 45,
-      image: "https://via.placeholder.com/400x400/FF1493/FFFFFF?text=Vinyl",
+      image: video1,
       category: "Music",
       rating: 5.0,
       reviews: 67,
@@ -123,7 +126,7 @@ export default function Shop() {
       id: 4,
       name: "Signature Jewelry Set",
       price: 85,
-      image: "https://via.placeholder.com/400x400/DA70D6/FFFFFF?text=Jewelry",
+      image: video1,
       category: "Accessories",
       rating: 4.7,
       reviews: 93,
@@ -134,7 +137,7 @@ export default function Shop() {
       id: 5,
       name: "Poster Collection",
       price: 25,
-      image: "https://via.placeholder.com/400x400/C71585/FFFFFF?text=Posters",
+      image: video1,
       category: "Decor",
       rating: 4.6,
       reviews: 156,
@@ -145,7 +148,7 @@ export default function Shop() {
       id: 6,
       name: "Parfum by Gyakie",
       price: 120,
-      image: "https://via.placeholder.com/400x400/FF69B4/FFFFFF?text=Perfume",
+      image: video1,
       category: "Beauty",
       rating: 4.9,
       reviews: 201,
@@ -247,7 +250,7 @@ export default function Shop() {
           className="relative w-full h-full bg-cover bg-no-repeat transition-all duration-300 ease-out"
           style={{
             backgroundImage: `linear-gradient(rgba(139, 69, 19, 0.3), rgba(139, 69, 19, 0.2)), 
-                             url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80')`,
+                             url(${largeDesktopImage})`,
             backgroundSize: isMobile ? '200% 100%' : 'cover',
             backgroundPosition: isMobile ? `${backgroundPosition}% center` : 'center center'
           }}

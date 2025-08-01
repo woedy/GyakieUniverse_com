@@ -76,7 +76,7 @@ export default function Universe() {
         orbitSpeed={0.3}
       />
 
-      {/* Central sun/core */}
+      {/* Central sun/core 
       <mesh position={[0, 0, 0]}>
         <sphereGeometry args={[0.5, 32, 32]} />
         <meshStandardMaterial 
@@ -85,6 +85,8 @@ export default function Universe() {
           emissiveIntensity={0.3}
         />
       </mesh>
+*/}
+
     </group>
   );
 }

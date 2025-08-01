@@ -21,7 +21,7 @@ export default function InteractionInstructions() {
     <>
       {/* Instructions for first-time users */}
       {showInstructions && !userInteracting && (
-        <div className={`fixed bottom-4 left-4 z-30 ${isMobile ? 'max-w-xs' : 'max-w-sm'}`}>
+        <div className={`fixed bottom-14 left-4 z-30 ${isMobile ? 'max-w-xs' : 'max-w-sm'}`}>
           <Card className="bg-black bg-opacity-80 border-purple-400 border-opacity-50">
             <div className={`${isMobile ? 'p-3' : 'p-4'}`}>
               <h3 className={`text-white font-semibold mb-3 flex items-center gap-2 ${isMobile ? 'text-sm' : ''}`}>
@@ -49,7 +49,7 @@ export default function InteractionInstructions() {
 
       {/* Real-time interaction feedback */}
       {(userInteracting || isUserControlling) && (
-        <div className={`fixed ${isMobile ? 'top-20' : 'top-1/2'} left-4 ${!isMobile && 'transform -translate-y-1/2'} z-30`}>
+        <div className={`fixed ${isMobile ? 'top-30' : 'top-1/2'} left-4 ${!isMobile && 'transform -translate-y-1/2'} z-30`}>
           <div className="space-y-2">
             {isUserControlling && (
               <Badge className={`bg-purple-600 text-white animate-pulse ${isMobile ? 'text-xs' : ''}`}>

@@ -151,7 +151,7 @@ export default function Planet({
             className={`transition-all duration-300 ${hovered ? 'scale-110' : 'scale-100'}`}
             style={{
               fontFamily: 'Dancing Script, cursive',
-              fontSize: '28px',
+              fontSize: '20px',
               fontWeight: '700',
               color: '#ff69b4',
               textShadow: '2px 2px 4px rgba(45, 27, 105, 0.9), 0 0 12px rgba(255, 105, 180, 0.6)',

@@ -3,20 +3,22 @@ import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight, Download, Heart } from "lucide-react";
 import BackButton from "../ui/BackButton";
+import video1 from '/images/cover/video1.png';
+
 
 export default function Images() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [likedImages, setLikedImages] = useState<Set<number>>(new Set());
 
   const images = [
-    { id: 1, src: "https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Gyakie+1", category: "Concert" },
-    { id: 2, src: "https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=Gyakie+2", category: "Portrait" },
-    { id: 3, src: "https://via.placeholder.com/600x400/45B7D1/FFFFFF?text=Gyakie+3", category: "Behind the Scenes" },
-    { id: 4, src: "https://via.placeholder.com/600x400/FFA07A/FFFFFF?text=Gyakie+4", category: "Concert" },
-    { id: 5, src: "https://via.placeholder.com/600x400/DDA0DD/FFFFFF?text=Gyakie+5", category: "Portrait" },
-    { id: 6, src: "https://via.placeholder.com/600x400/FFD700/FFFFFF?text=Gyakie+6", category: "Behind the Scenes" },
-    { id: 7, src: "https://via.placeholder.com/600x400/98FB98/FFFFFF?text=Gyakie+7", category: "Concert" },
-    { id: 8, src: "https://via.placeholder.com/600x400/F0E68C/FFFFFF?text=Gyakie+8", category: "Portrait" }
+    { id: 1, src: video1, category: "Concert" },
+    { id: 2, src: video1, category: "Portrait" },
+    { id: 3, src: video1, category: "Behind the Scenes" },
+    { id: 4, src: video1, category: "Concert" },
+    { id: 5, src: video1, category: "Portrait" },
+    { id: 6, src: video1, category: "Behind the Scenes" },
+    { id: 7, src: video1, category: "Concert" },
+    { id: 8, src: video1, category: "Portrait" }
   ];
 
   const categories = ["All", "Concert", "Portrait", "Behind the Scenes"];

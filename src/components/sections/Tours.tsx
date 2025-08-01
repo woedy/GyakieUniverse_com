@@ -174,7 +174,7 @@ export default function Tours() {
         </section>
 
         {/* Newsletter Signup */}
-        <section className="mt-16 text-center">
+        <section className="mt-16 mb-8 text-center">
           <Card className="bg-gradient-to-r from-purple-600 to-blue-600 border-none">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-white mb-4">Never Miss a Show</h3>

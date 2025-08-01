@@ -4,6 +4,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Instagram, Twitter, Youtube, Music, Award, Globe } from "lucide-react";
 import BackButton from "../ui/BackButton";
+import video1 from '/images/cover/video1.png';
 
 export default function About() {
   const achievements = [
@@ -32,7 +33,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
             <img
-              src="https://via.placeholder.com/600x800/8B5CF6/FFFFFF?text=Gyakie"
+                  src={video1}
               alt="Gyakie"
               className="w-full h-96 object-cover rounded-lg shadow-2xl"
             />
@@ -130,7 +131,7 @@ export default function About() {
         </section>
 
         {/* Contact */}
-        <section className="text-center">
+        <section className="text-center mb-8">
           <Card className="bg-black bg-opacity-50 border-purple-400">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-white mb-4">Connect with Gyakie</h3>

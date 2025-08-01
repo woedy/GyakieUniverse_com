@@ -22,23 +22,23 @@ Preferred communication style: Simple, everyday language.
 ✓ Converted to static site (removed server dependencies) 
 ✓ Fixed routing - back button properly returns to universe screen
 ✓ Added smooth zoom-in animation when opening pages from universe
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 ✓ Applied beautiful Great Vibes handwriting font for planet names (feminine music artist theme)
 ✓ Added top navigation bar and footer for emergency navigation between sections
 ✓ Implemented smooth page transitions with framer-motion
 ✓ Created deployment-ready package with proper README and instructions
 ✓ Fixed all import paths for static site structure
-=======
+
+
 ✓ Applied fancy Dancing Script font for planet names (music artist theme)
 ✓ Added top navigation bar and footer for emergency navigation between sections
 ✓ Implemented smooth page transitions with framer-motion
->>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
-=======
+
+
 ✓ Applied fancy Dancing Script font for planet names (music artist theme)
 ✓ Added top navigation bar and footer for emergency navigation between sections
 ✓ Implemented smooth page transitions with framer-motion
->>>>>>> f26b77818df8ed64602877622c20a7be0db03f1d
 
 ## System Architecture
 

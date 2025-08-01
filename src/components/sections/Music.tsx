@@ -3,6 +3,8 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";  
 import { Play, Pause, Download } from "lucide-react";
 import BackButton from "../ui/BackButton";
+import video1 from '/images/cover/video1.png';
+
 
 export default function Music() {
   const [playing, setPlaying] = useState<string | null>(null);
@@ -12,7 +14,7 @@ export default function Music() {
       id: 1,
       title: "Forever",
       year: "2021",
-      cover: "https://via.placeholder.com/300x300/FF6B6B/FFFFFF?text=Forever",
+      cover: video1,
       tracks: [
         { name: "Forever", duration: "3:24" },
         { name: "Something", duration: "3:45" },
@@ -23,7 +25,7 @@ export default function Music() {
       id: 2,
       title: "My Diary",
       year: "2022",
-      cover: "https://via.placeholder.com/300x300/4ECDC4/FFFFFF?text=My+Diary",
+      cover: video1,
       tracks: [
         { name: "Flames", duration: "3:18" },
         { name: "Something", duration: "3:33" },
@@ -94,7 +96,7 @@ export default function Music() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center mb-10">
           <h2 className="text-3xl font-bold mb-6">Latest Singles</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {["Need Me", "Rent Free", "Something"].map((single, index) => (

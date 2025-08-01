@@ -53,7 +53,7 @@ export default function PlanetLabel({ position, label, isHovered }: PlanetLabelP
         top: '-50%',
         transformOrigin: 'center center',
         fontFamily: 'Dancing Script, cursive',
-        fontSize: '24px',
+        fontSize: '20px',
         fontWeight: '700',
         color: '#ff69b4',
         textShadow: '2px 2px 4px rgba(45, 27, 105, 0.8), 0 0 10px rgba(255, 105, 180, 0.5)',
